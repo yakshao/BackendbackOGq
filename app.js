@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
@@ -15,7 +16,7 @@ require('dotenv').config();
 
 var app = express();
 app.use(cors())
-
+const port = process.env.PORT || 4000;
 // view engine setup
 
 
@@ -93,5 +94,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 
 });
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 module.exports = app;
